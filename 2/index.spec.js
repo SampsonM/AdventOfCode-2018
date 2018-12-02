@@ -1,8 +1,9 @@
 const { expect } = require('chai');
-const inventoryManagement = require('./index.js');
+const inventoryManagement = require('./inventoryManagmentPt1.js');
+const inventoryManagmentPt2 = require('./inventoryManagmentPt2.js');
 const AOCInput = require('./input');
 
-describe('', () => {
+describe('Pt1', () => {
   it('returns 0 if no input contains double or triple letters', () => {
     const input = ['asdfghjkl'];
 
@@ -75,4 +76,37 @@ describe('', () => {
     expect(result).to.equal(12);
   });
 
-})
+});
+
+describe.only('Pt2', () => {
+  it('returns empty string when passed single input', () => {
+    const input = ['asdf', 'bshk'];
+
+    const result = inventoryManagmentPt2(input);
+
+    expect(result).to.equal('')
+  })
+  
+  it('returns string of similar letters when passed inputs with one ltter different', () => {
+    const input = ['asdf', 'bsdf'];
+
+    const result = inventoryManagmentPt2(input);
+
+    expect(result).to.equal('sdf')
+  })
+
+  it('returns string of similar letters when passed inputs with one ltter different', () => {
+    const input = ['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz'];
+
+    const result = inventoryManagmentPt2(input);
+
+    expect(result).to.equal('fgij')
+  })
+  
+  it('returns string of similar letters when passed inputs with one ltter different', () => {
+    const input = AOCInput;
+    const result = inventoryManagmentPt2(input);
+
+    expect(result).to.equal('fgij')
+  })
+});
