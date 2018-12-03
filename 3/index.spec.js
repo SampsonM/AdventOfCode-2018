@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const fabricClaim = require('./index.js');
+const fabricClaim = require('./pt1.js');
 const sections = require('./input.js');
 
 describe('Pt1', () => {

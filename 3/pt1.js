@@ -11,19 +11,14 @@ function fabricClaim(input) {
     const xSize = Number(size[0]);
     const ySize = Number(size[1]);
 
-    let overLapped = false;
-
     for (let i = yCoord; i < yCoord+ySize; ++i) {
       for (let j = xCoord; j < xCoord+xSize; ++j) {
   
         const position = `${j}, ${i}`;
 
-        if (res[position]) {
-          overLapped = true;
-          ++res[position]
-        } else {
-          res[position] = 1;
-        }
+        res[position] = res[position]
+          ? ++res[position]
+          : 1;
   
       }
     }
@@ -32,22 +27,20 @@ function fabricClaim(input) {
   },{})
 
   let covered = 0;
-  let sinlgeCover = [];
+  let singleCover = [];
 
   for (let area in coveredArea) {
-    if (coveredArea[area] > 1) {
-      ++covered
-    } else {
-      sinlgeCover.push({
-        area: `${area}`,
-        areaCovered: `${coveredArea[area]}`
-      })
-    }
+    (coveredArea[area] > 1)
+      ? ++covered
+      : singleCover.push({
+          area: `${area}`,
+          areaCovered: `${coveredArea[area]}`
+        })
   }
 
   return {
     covered,
-    sinlgeCover
+    singleCover
   };
 }
 
